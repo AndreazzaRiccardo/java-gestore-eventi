@@ -44,8 +44,11 @@ public class Main {
                 case "2":
                     cancelReservation(event, scan);
                     break;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
             }
         }
+        scan.close();
     }
 
     private static void addReservation(Event event, Scanner scan) {

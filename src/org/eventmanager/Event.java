@@ -59,6 +59,18 @@ public class Event {
         bookedSeats -= cancelValue;
     }
 
+    public String eventDetails() {
+        StringBuilder separator = new StringBuilder();
+        separator.append("*".repeat(150));
+
+        return  separator + "\n" +
+                "Name: " + title  + "  -  " +
+                "Date: " + date  + "  -  " +
+                "Total seats: " + totalSeats + "  -  " +
+                "Remaining seats: " + (totalSeats - bookedSeats) + "\n" +
+                separator;
+    }
+
     @Override
     public String toString() {
         return date + " - " + title;

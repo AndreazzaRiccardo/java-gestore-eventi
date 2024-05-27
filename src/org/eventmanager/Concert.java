@@ -34,14 +34,22 @@ public class Concert extends Event{
     }
 
     @Override
-    public String toString() {
+    public String eventDetails() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         DecimalFormat decimalFormatter = new DecimalFormat("#0.00");
-        return "Date: " + getDate().format(dateFormatter) + "\n" +
-                "Hour: " + getHour().format(timeFormatter) + "\n" +
-                "Name: " + getTitle() + "\n" +
-                "Price: " + decimalFormatter.format(getPrice()) + " €";
+
+        StringBuilder separator = new StringBuilder();
+        separator.append("*".repeat(150));
+
+        return  separator + "\n" +
+                "Name: " + getTitle()  + "  -  " +
+                "Date: " + getDate().format(dateFormatter)  + "  -  " +
+                "Total seats: " + getTotalSeats() + "  -  " +
+                "Remaining seats: " + (getTotalSeats() - getBookedSeats()) + "  -  " +
+                "Hour: " + hour.format(timeFormatter) + "  -  " +
+                "Price: " + decimalFormatter.format(price) + " €" + "  -  " + "\n" +
+                separator;
     }
 
     private BigDecimal validatePrice(BigDecimal price){
